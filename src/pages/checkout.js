@@ -23,7 +23,7 @@ function checkout() {
         />
         <div className="flex flex-col p-5 space-y-10 bg-white">
             <h1 className="text-3xl border-b pb-4 font-bold">
-                Your basket contains {items.length} items
+                Your basket contains asd {items.length} items
             </h1>
 
             {items.map((item, i) => (
