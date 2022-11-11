@@ -1,5 +1,5 @@
 import Header from "../components/Header"
-import Image from "next/image"
+import Image from "next/legacy/image";
 import { useSelector } from "react-redux"
 import { selectItems, selectTotal } from "../slices/basketSlice"
 import CheckoutProduct from "../components/CheckoutProduct"
@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react"
 import { loadStripe } from "@stripe/stripe-js"
 import axios from "axios"
 
+//Loads Stripe and passes in Public Key passed into stripePromise
 const stripePromise = loadStripe(process.env.stripe_public_key)
 
 function checkout() {
@@ -17,13 +18,14 @@ function checkout() {
     
     const createCheckoutSession = async () => {
         const stripe = await stripePromise;
-
+        
+    // Call the backend to create a checkout session...
         const checkoutSession = await axios.post("/api/create-checkout-session", 
         {
             items: items,
             email: session.user.email 
         });
-
+    //Takes the ID and create a redirect to a page.
         const result = await stripe.redirectToCheckout({
          sessionId: checkoutSession.data.id   
         })
