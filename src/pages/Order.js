@@ -13,8 +13,8 @@ function Order({id, amount, amountShipping, items, timestamp, images}) {
             <div>
                 <p className="text-xs font-bold"> TOTAL</p>
                 <p> 
-                   <Currency quantity={amount} currency="USD" /> - Next day delivery {" "}
-                   <Currency quantity={amountShipping} currency="USD" />
+                   <Currency quantity={amount} currency="USD" /> - Next day delivery | {" "}
+                   <Currency quantity={amountShipping} currency="USD" /> - Shipping
 
                 </p>
             </div>
