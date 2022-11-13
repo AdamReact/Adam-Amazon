@@ -5,13 +5,13 @@ export default async (req, res) => {
 
     // Puts items in a array called transformedItems
     const transformedItems = items.map((item) => ({
-        description: item.description,
         quantity: 1,
         price_data: {
             currency: 'usd',
             unit_amount: item.price * 100,
             product_data: {
                 name: item.title,
+                description: item.description,
                 images: [item.image]
             },
         }
@@ -21,7 +21,6 @@ export default async (req, res) => {
     // Put all transformedItems into a session with the function stripe.checkout.session and pass an ID back out
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
-        shipping_rates: ['shr_1M2eyPIPyXl3KpJy7waHABuW'],
         shipping_address_collection: {
             allowed_countries: ['GB', 'US', 'CA']
         },
