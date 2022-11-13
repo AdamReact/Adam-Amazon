@@ -53,8 +53,8 @@ function Header() {
                 <MenuIcon className="h-8 mr-1"/>
                All 
             </p>
-            <p className="link">Prime video  | </p>
-            <p className="link">Today's deal  | </p>
+            <p onClick={() => router.push("http://google.com")} className="link">Google.com  | </p>
+            <p onClick={() => router.push("https://netflix-adam.web.app")} className="link"> Netflix Version  | </p>
             <p className="link">Amazon Business  |</p>
             <p className="link hidden lg:inline-flex"> Electronics  |</p>
             <p className="link hidden lg:inline-flex"> Food & Groceries  |</p>
